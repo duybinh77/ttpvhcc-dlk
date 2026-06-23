@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard hệ thống TTHC các Bộ, ngành</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #132033;
+      --sub: #64748b;
+      --line: #e2e8f0;
+      --blue: #0f62fe;
+      --green: #07864b;
+      --shadow: 0 10px 24px rgba(15, 23, 42, .07);
+      --radius: 16px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Segoe UI", Roboto, Arial, "Noto Sans", Tahoma, sans-serif;
+      font-size: 14px;
+    }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 22px; }
+    .hero {
+      background: linear-gradient(135deg, #0b57d0, #0f8f68);
+      color: #fff;
+      border-radius: 20px;
+      padding: 22px 24px;
+      box-shadow: var(--shadow);
+    }
+    .hero h1 { margin: 0 0 8px; font-size: 24px; line-height: 1.25; }
+    .hero p { margin: 0; max-width: 980px; opacity: .94; line-height: 1.55; }
+    .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 14px 0; }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; box-shadow: var(--shadow); }
+    .card .label { color: var(--sub); font-size: 12px; margin-bottom: 6px; }
+    .card .value { font-size: 26px; font-weight: 800; }
+    .toolbar { display: flex; gap: 10px; align-items: center; margin: 14px 0; }
+    .search {
+      flex: 1;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font: inherit;
+      outline: none;
+      background: #fff;
+    }
+    .search:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(15, 98, 254, .12); }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      border: 0;
+      border-radius: 999px;
+      padding: 8px 11px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 12px;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .btn.primary { background: var(--blue); }
+    .btn.zalo { background: var(--green); }
+    .btn.light { background: #fff; color: var(--text); border: 1px solid var(--line); }
+    .tablebox { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 12px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { background: #eef4ff; text-align: left; font-size: 12px; text-transform: uppercase; letter-spacing: .02em; color: #334155; position: sticky; top: 0; z-index: 1; }
+    tr:hover td { background: #fafcff; }
+    tr:last-child td { border-bottom: 0; }
+    .num { width: 48px; text-align: center; color: var(--sub); font-weight: 700; }
+    .support { min-width: 310px; line-height: 1.5; }
+    .url { color: var(--sub); font-size: 12px; margin-top: 6px; word-break: break-all; }
+    .phone { color: #0b57d0; text-decoration: none; font-weight: 650; }
+    .tag { display: inline-flex; padding: 7px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; }
+    .tag.muted { background: #f1f5f9; color: #64748b; }
+    .foot { color: var(--sub); font-size: 12px; margin-top: 10px; }
+    .count { color: var(--sub); font-size: 13px; margin-left: auto; }
+    @media (max-width: 880px) {
+      .wrap { padding: 12px; }
+      .cards { grid-template-columns: repeat(2, 1fr); }
+      .toolbar { flex-wrap: wrap; }
+      .search { flex-basis: 100%; }
+      th:nth-child(3), td:nth-child(3) { min-width: 160px; }
+      table { min-width: 860px; }
+      .tablebox { overflow-x: auto; }
+    }
+    @media print {
+      body { background: #fff; }
+      .toolbar, .btn.light { display: none !important; }
+      .wrap { max-width: none; padding: 0; }
+      .hero, .card, .tablebox { box-shadow: none; }
+      .hero { background: #fff; color: #000; border: 1px solid #ddd; }
+      .btn { color: #000; background: #fff !important; border: 1px solid #ddd; }
+      .url { color: #000; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <h1>Hệ thống thông tin giải quyết TTHC của các Bộ, ngành</h1>
+      <p>Theo dõi nhanh địa chỉ truy cập, đầu mối hỗ trợ kỹ thuật và nhóm Zalo phục vụ vận hành, hỗ trợ cán bộ trong quá trình xử lý hồ sơ thủ tục hành chính trên các hệ thống dùng chung của bộ, ngành.</p>
+    </section>
+
+    <section class="cards">
+      <div class="card"><div class="label">Tổng bộ/ngành</div><div class="value">13</div></div>
+      <div class="card"><div class="label">Có link hệ thống</div><div class="value">12</div></div>
+      <div class="card"><div class="label">Có nhóm Zalo</div><div class="value">11</div></div>
+      <div class="card"><div class="label">Đầu mối hỗ trợ</div><div class="value">13</div></div>
+    </section>
+
+    <div class="toolbar">
+      <input id="q" class="search" type="search" placeholder="Tìm theo bộ/ngành, hệ thống, đầu mối, số điện thoại..." autocomplete="off">
+      <button class="btn light" onclick="downloadCSV()">Tải CSV</button>
+      <button class="btn light" onclick="window.print()">In / lưu PDF</button>
+      <span class="count" id="count">Hiển thị 13/13</span>
+    </div>
+
+    <section class="tablebox">
+      <table id="tbl">
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th>Bộ, ngành</th>
+            <th>Địa chỉ truy cập</th>
+            <th>Đầu mối hỗ trợ kỹ thuật</th>
+            <th>Nhóm Zalo</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+      <tr data-search="bộ nội vụ http://motcua.moha.gov.vn hồ sỹ hải - sđt: 0396 451 316 - sở nội vụ https://zalo.me/g/fwvsft363">
+        <td class="num">1</td>
+        <td><strong>Bộ Nội vụ</strong></td>
+        <td><a class="btn primary" target="_blank" rel="noopener" href="http://motcua.moha.gov.vn">Mở hệ thống</a><div class="url">http://motcua.moha.gov.vn</div></td>
+        <td class="support">Hồ Sỹ Hải - SĐT: <a class="phone" href="tel:0396451316">0396 451 316</a> - Sở Nội vụ</td>
+        <td><a class="btn zalo" target="_blank" rel="noopener" href="https://zalo.me/g/fwvsft363">Nhóm Zalo</a></td>
+      </tr>
+      <tr data-search="bộ xây dựng https://motcuabxd.moc.gov.vn trần thanh tú - sđt: 0947488008 - sở xây dựng https://zalo.me/g/hqligt737">
+        <td class="num">2</td>
+        <td><strong>Bộ Xây dựng</strong></td>
+        <td><a class="btn primary" target="_blank" rel="noopener" href="https://motcuabxd.moc.gov.vn">Mở hệ thống</a><div class="url">https://motcuabxd.moc.gov.vn</div></td>
+        <td class="support">Trần Thanh Tú - SĐT: <a class="phone" href="tel:0947488008">0947488008</a> - Sở Xây dựng</td>
+        <td><a class="btn zalo" target="_blank" rel="noopener" href="https://zalo.me/g/hqligt737">Nhóm Zalo</a></td>
+      </tr>
+      <tr data-search="bộ dân tộc và tôn giáo https://gqtthc.bdttg.gov.vn/ lê minh sơn, 0935178228, sở dân tộc và tôn giáo https://zalo.me/g/zbuuqt940">
+        <td class="num">3</td>
+        <td><strong>Bộ Dân tộc và Tôn giáo</strong></td>
+        <td><a class="btn primary" target="_blank" rel="noopener" href="https://gqtthc.bdttg.gov.vn/">Mở hệ thống</a><div class="url">https://gqtthc.bdttg.gov.vn/</div></td>
+        <td class="support">Lê Minh Sơn, <a class="phone" href="tel:0935178228">0935178228</a>, Sở Dân tộc và Tôn giáo</td>
+        <td><a class="btn zalo" target="_blank" rel="noopener" href="https://zalo.me/g/zbuuqt940">Nhóm Zalo</a></td>
+      </tr>
+      <tr data-search="bộ công thương https://motcua-tthc.moit.gov.vn hỗ trợ quy trình: lê thị tường vy, 0972544647, sở công thương
+hỗ trợ kỹ thuật: trần thị thế ngọc, 0943462120, vnpt đắk lắk https://zalo.me/g/ukgdvk105">
+        <td class="num">4</td>
+        <td><strong>Bộ Công Thương</strong></td>
+        <td><a class="btn primary" target="_blank" rel="noopener" href="https://motcua-tthc.moit.gov.vn">Mở hệ thống</a><div class="url">https://motcua-tthc.moit.gov.vn</div></td>
+        <td class="support">Hỗ trợ quy trình: Lê Thị Tường Vy, <a class="phone" href="tel:0972544647">0972544647</a>, Sở Công Thương<br>Hỗ trợ kỹ thuật: Trần Thị Thế Ngọc, <a class="phone" href="tel:0943462120">0943462120</a>, VNPT Đắk Lắk</td>
+        <td><a class="btn zalo" target="_blank" rel="noopener" href="https://zalo.me/g/ukgdvk105">Nhóm Zalo</a></td>
+      </tr>
+      <tr data-search="bộ nông nghiệp và môi trường https://motcuannmt.mae.gov.vn huỳnh thị thanh thảo - 0973274736 - sở nông nghiệp và môi trường https://zalo.me/g/egiwfm514">
+        <td class="num">5</td>
+        <td><strong>Bộ Nông nghiệp và Môi trường</strong></td>
+        <td><a class="btn primary" target="_blank" rel="noopener" href="https://motcuannmt.mae.gov.vn">Mở hệ thống</a><div class="url">https://motcuannmt.mae.gov.vn</div></td>
+        <td class="support">Huỳnh Thị Thanh Thảo - <a class="phone" href="tel:0973274736">0973274736</a> - Sở Nông nghiệp và Môi trường</td>
+        <td><a class="btn zalo" target="_blank" rel="noopener" href="https://zalo.me/g/egiwfm514">Nhóm Zalo</a></td>
+      </tr>
+      <tr data-search="bộ y tế https://motcua.moh.gov.vn võ lương vũ- 0914039018- sở y tế https://zalo.me/g/qxcqiy076">
+        <td class="num">6</td>
+        <td><strong>Bộ Y tế</strong></td>
+        <td><a class="btn primary" target="_blank" rel="noopener" href="https://motcua.moh.gov.vn">Mở hệ thống</a><div class="url">https://motcua.moh.gov.vn</div></td>
+        <td class="support">Võ Lương Vũ- <a class="phone" href="tel:0914039018">0914039018</a>- Sở Y tế</td>
+        <td><a class="btn zalo" target="_blank" rel="noopener" href="https://zalo.me/g/qxcqiy076">Nhóm Zalo</a></td>
+      </tr>
+      <tr data-search="bộ tư pháp https://motcua.moj.gov.vn phan văn đạo, 0979172755, sở tư pháp https://zalo.me/g/nowjli641">
+        <td class="num">7</td>
+        <td><strong>Bộ Tư pháp</strong></td>
+        <td><a class="btn primary" target="_blank" rel="noopener" href="https://motcua.moj.gov.vn">Mở hệ thống</a><div class="url">https://motcua.moj.gov.vn</div></td>
+        <td class="support">Phan Văn Đạo, <a class="phone" href="tel:0979172755">0979172755</a>, Sở Tư pháp</td>
+        <td><a class="btn zalo" target="_blank" rel="noopener" href="https://zalo.me/g/nowjli641">Nhóm Zalo</a></td>
+      </tr>
+      <tr data-search="bộ giáo dục và đào tạo https://dvc.moet.gov.vn/vi/ phan thanh long - 0964006600- sở gdđt https://zalo.me/g/nplrin458">
+        <td class="num">8</td>
+        <td><strong>Bộ Giáo dục và Đào tạo</strong></td>
+        <td><a class="btn primary" target="_blank" rel="noopener" href="https://dvc.moet.gov.vn/vi/">Mở hệ thống</a><div class="url">https://dvc.moet.gov.vn/vi/</div></td>
+        <td class="support">Phan Thanh Long - <a class="phone" href="tel:0964006600">0964006600</a>- Sở GDĐT</td>
+        <td><a class="btn zalo" target="_blank" rel="noopener" href="https://zalo.me/g/nplrin458">Nhóm Zalo</a></td>
+      </tr>
+      <tr data-search="bộ khoa học và công nghệ https://motcua.mst.gov.vn trần văn minh - sđt: 0983855797 - sở khoa học và công nghệ https://zalo.me/g/gxpudn968">
+        <td class="num">9</td>
+        <td><strong>Bộ Khoa học và Công nghệ</strong></td>
+        <td><a class="btn primary" target="_blank" rel="noopener" href="https://motcua.mst.gov.vn">Mở hệ thống</a><div class="url">https://motcua.mst.gov.vn</div></td>
+        <td class="support">Trần Văn Minh - SĐT: <a class="phone" href="tel:0983855797">0983855797</a> - Sở Khoa học và Công nghệ</td>
+        <td><a class="btn zalo" target="_blank" rel="noopener" href="https://zalo.me/g/gxpudn968">Nhóm Zalo</a></td>
+      </tr>
+      <tr data-search="bộ văn hóa, thể thao và du lịch https://dichvucong.bvhttdl.gov.vn võ khánh ngọc - sđt: 0708191077 - sở văn hóa, thể thao và du lịch https://zalo.me/g/byqawd008">
+        <td class="num">10</td>
+        <td><strong>Bộ Văn hóa, Thể thao và Du lịch</strong></td>
+        <td><a class="btn primary" target="_blank" rel="noopener" href="https://dichvucong.bvhttdl.gov.vn">Mở hệ thống</a><div class="url">https://dichvucong.bvhttdl.gov.vn</div></td>
+        <td class="support">Võ Khánh Ngọc - SĐT: <a class="phone" href="tel:0708191077">0708191077</a> - Sở Văn hóa, Thể thao và Du lịch</td>
+        <td><a class="btn zalo" target="_blank" rel="noopener" href="https://zalo.me/g/byqawd008">Nhóm Zalo</a></td>
+      </tr>
+      <tr data-search="bộ tài chính https://dvctt.mof.gov.vn/ cấp mã số qhns: phan thị véc nơ, chuyên viên văn phòng, 0977.009.747
+đăng ký thành lập doanh nghiệp: nguyễn minh thuật, phòng quản lý doanh nghiệp, 0985.551495 https://zalo.me/g/bkpupl964">
+        <td class="num">11</td>
+        <td><strong>Bộ Tài chính</strong></td>
+        <td><a class="btn primary" target="_blank" rel="noopener" href="https://dvctt.mof.gov.vn/">Mở hệ thống</a><div class="url">https://dvctt.mof.gov.vn/</div></td>
+        <td class="support">Cấp mã số QHNS: Phan Thị Véc Nơ, Chuyên viên Văn phòng, <a class="phone" href="tel:0977009747">0977.009.747</a><br>Đăng ký thành lập doanh nghiệp: Nguyễn Minh Thuật, Phòng Quản lý doanh nghiệp, <a class="phone" href="tel:0985551495">0985.551495</a></td>
+        <td><a class="btn zalo" target="_blank" rel="noopener" href="https://zalo.me/g/bkpupl964">Nhóm Zalo</a></td>
+      </tr>
+      <tr data-search="bộ ngoại giao https://dichvucong.mofa.gov.vn/ vũ hoàng thịnh, đt: 0325622216, phòng ngoại vụ văn phòng ubnd tỉnh ">
+        <td class="num">12</td>
+        <td><strong>Bộ Ngoại giao</strong></td>
+        <td><a class="btn primary" target="_blank" rel="noopener" href="https://dichvucong.mofa.gov.vn/">Mở hệ thống</a><div class="url">https://dichvucong.mofa.gov.vn/</div></td>
+        <td class="support">Vũ Hoàng Thịnh, ĐT: <a class="phone" href="tel:0325622216">0325622216</a>, phòng Ngoại vụ Văn phòng UBND tỉnh</td>
+        <td><span class="tag muted">Chưa có Zalo</span></td>
+      </tr>
+      <tr data-search="thanh tra chính phủ  nguyễn trọng sơn, đt: 0337.641.621; thanh tra tỉnh ">
+        <td class="num">13</td>
+        <td><strong>Thanh tra Chính phủ</strong></td>
+        <td><span class="tag muted">Chưa có link</span><div class="url"></div></td>
+        <td class="support">Nguyễn Trọng Sơn, ĐT: <a class="phone" href="tel:0337641621">0337.641.621</a>; Thanh tra tỉnh</td>
+        <td><span class="tag muted">Chưa có Zalo</span></td>
+      </tr>
+        </tbody>
+      </table>
+    </section>
+    <div class="foot">Ghi chú: Các nút “Mở hệ thống” và “Nhóm Zalo” mở trong tab mới. Số điện thoại có thể bấm để gọi trên thiết bị hỗ trợ.</div>
+  </div>
+
+  <script>
+    const rows = Array.from(document.querySelectorAll('#tbl tbody tr'));
+    const q = document.getElementById('q');
+    const count = document.getElementById('count');
+    const total = rows.length;
+    q.addEventListener('input', () => {
+      const term = q.value.trim().toLowerCase();
+      let shown = 0;
+      rows.forEach(tr => {
+        const ok = tr.dataset.search.includes(term);
+        tr.style.display = ok ? '' : 'none';
+        if (ok) shown++;
+      });
+      count.textContent = `Hiển thị ${shown}/${total}`;
+    });
+
+    const csvData = [["STT", "Bộ, ngành", "Địa chỉ truy cập", "Đầu mối hỗ trợ kỹ thuật", "Nhóm Zalo"], [1, "Bộ Nội vụ", "http://motcua.moha.gov.vn", "Hồ Sỹ Hải - SĐT: 0396 451 316 - Sở Nội vụ", "https://zalo.me/g/fwvsft363"], [2, "Bộ Xây dựng", "https://motcuabxd.moc.gov.vn", "Trần Thanh Tú - SĐT: 0947488008 - Sở Xây dựng", "https://zalo.me/g/hqligt737"], [3, "Bộ Dân tộc và Tôn giáo", "https://gqtthc.bdttg.gov.vn/", "Lê Minh Sơn, 0935178228, Sở Dân tộc và Tôn giáo", "https://zalo.me/g/zbuuqt940"], [4, "Bộ Công Thương", "https://motcua-tthc.moit.gov.vn", "Hỗ trợ quy trình: Lê Thị Tường Vy, 0972544647, Sở Công Thương; Hỗ trợ kỹ thuật: Trần Thị Thế Ngọc, 0943462120, VNPT Đắk Lắk", "https://zalo.me/g/ukgdvk105"], [5, "Bộ Nông nghiệp và Môi trường", "https://motcuannmt.mae.gov.vn", "Huỳnh Thị Thanh Thảo - 0973274736 - Sở Nông nghiệp và Môi trường", "https://zalo.me/g/egiwfm514"], [6, "Bộ Y tế", "https://motcua.moh.gov.vn", "Võ Lương Vũ- 0914039018- Sở Y tế", "https://zalo.me/g/qxcqiy076"], [7, "Bộ Tư pháp", "https://motcua.moj.gov.vn", "Phan Văn Đạo, 0979172755, Sở Tư pháp", "https://zalo.me/g/nowjli641"], [8, "Bộ Giáo dục và Đào tạo", "https://dvc.moet.gov.vn/vi/", "Phan Thanh Long - 0964006600- Sở GDĐT", "https://zalo.me/g/nplrin458"], [9, "Bộ Khoa học và Công nghệ", "https://motcua.mst.gov.vn", "Trần Văn Minh - SĐT: 0983855797 - Sở Khoa học và Công nghệ", "https://zalo.me/g/gxpudn968"], [10, "Bộ Văn hóa, Thể thao và Du lịch", "https://dichvucong.bvhttdl.gov.vn", "Võ Khánh Ngọc - SĐT: 0708191077 - Sở Văn hóa, Thể thao và Du lịch", "https://zalo.me/g/byqawd008"], [11, "Bộ Tài chính", "https://dvctt.mof.gov.vn/", "Cấp mã số QHNS: Phan Thị Véc Nơ, Chuyên viên Văn phòng, 0977.009.747; Đăng ký thành lập doanh nghiệp: Nguyễn Minh Thuật, Phòng Quản lý doanh nghiệp, 0985.551495", "https://zalo.me/g/bkpupl964"], [12, "Bộ Ngoại giao", "https://dichvucong.mofa.gov.vn/", "Vũ Hoàng Thịnh, ĐT: 0325622216, phòng Ngoại vụ Văn phòng UBND tỉnh", ""], [13, "Thanh tra Chính phủ", "", "Nguyễn Trọng Sơn, ĐT: 0337.641.621; Thanh tra tỉnh", ""]];
+    function downloadCSV() {
+      const csv = csvData.map(row => row.map(value => {
+        const s = String(value ?? '').replace(/"/g, '""');
+        return /[",
+;]/.test(s) ? `"${s}"` : s;
+      }).join(',')).join('
+');
+      const blob = new Blob(['﻿' + csv], {type: 'text/csv;charset=utf-8;'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'danh_sach_he_thong_TTHC_bo_nganh.csv';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
